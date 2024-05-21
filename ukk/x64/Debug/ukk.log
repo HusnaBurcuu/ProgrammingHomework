@@ -1,0 +1,3 @@
+﻿  ukk.cpp
+C:\Users\90555\source\repos\ukk\ukk\ukk.cpp(103,15): warning C4244: 'bağımsız değişken': 'time_t' - 'unsigned int' dönüşümü; veri kaybı olabilir
+  ukk.vcxproj -> C:\Users\90555\source\repos\ukk\x64\Debug\ukk.exe
