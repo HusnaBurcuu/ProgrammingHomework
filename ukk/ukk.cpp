@@ -6,7 +6,6 @@
 const int ROWS = 10000;
 const int COLS = 10000;
 
-// Function to generate a 2D array using array of pointers
 int** generateMatrixPtr() {
     int** matrix = new int* [ROWS];
     for (int i = 0; i < ROWS; i++) {
@@ -14,24 +13,22 @@ int** generateMatrixPtr() {
     }
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++) {
-            matrix[i][j] = rand() % 100; // random values between 0 and 99
+            matrix[i][j] = rand() % 100;
         }
     }
     return matrix;
 }
 
-// Function to generate a 2D array using one-dimensional analog
 int* generateMatrix1D() {
     int* matrix = new int[ROWS * COLS];
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++) {
-            matrix[i * COLS + j] = rand() % 100; // random values between 0 and 99
+            matrix[i * COLS + j] = rand() % 100;
         }
     }
     return matrix;
 }
 
-// Function to find max element in a 2D array using array of pointers
 int findMaxPtr(int** matrix) {
     int max = matrix[0][0];
     for (int i = 0; i < ROWS; i++) {
@@ -44,7 +41,6 @@ int findMaxPtr(int** matrix) {
     return max;
 }
 
-// Function to find max element in a 2D array using one-dimensional analog
 int findMax1D(int* matrix) {
     int max = matrix[0];
     for (int i = 0; i < ROWS * COLS; i++) {
@@ -55,7 +51,6 @@ int findMax1D(int* matrix) {
     return max;
 }
 
-// Function to find min element in a 2D array using array of pointers
 int findMinPtr(int** matrix) {
     int min = matrix[0][0];
     for (int i = 0; i < ROWS; i++) {
@@ -68,7 +63,6 @@ int findMinPtr(int** matrix) {
     return min;
 }
 
-// Function to find min element in a 2D array using one-dimensional analog
 int findMin1D(int* matrix) {
     int min = matrix[0];
     for (int i = 0; i < ROWS * COLS; i++) {
@@ -79,7 +73,6 @@ int findMin1D(int* matrix) {
     return min;
 }
 
-// Function to calculate sum of elements in a 2D array using array of pointers
 int calculateSumPtr(int** matrix) {
     int sum = 0;
     for (int i = 0; i < ROWS; i++) {
@@ -90,7 +83,6 @@ int calculateSumPtr(int** matrix) {
     return sum;
 }
 
-// Function to calculate sum of elements in a 2D array using one-dimensional analog
 int calculateSum1D(int* matrix) {
     int sum = 0;
     for (int i = 0; i < ROWS * COLS; i++) {
@@ -100,12 +92,10 @@ int calculateSum1D(int* matrix) {
 }
 
 int main() {
-    srand(time(0)); // seed for random number generation
+    srand(time(0));
 
-    // Generate 2D array using array of pointers
     int** matrixPtr = generateMatrixPtr();
 
-    // Measure execution time for array of pointers
     auto startPtr = std::chrono::high_resolution_clock::now();
     int maxPtr = findMaxPtr(matrixPtr);
     int minPtr = findMinPtr(matrixPtr);
@@ -113,10 +103,8 @@ int main() {
     auto endPtr = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> durationPtr = endPtr - startPtr;
 
-    // Generate 2D array using one-dimensional analog
     int* matrix1D = generateMatrix1D();
 
-    // Measure execution time for one-dimensional analog
     auto start1D = std::chrono::high_resolution_clock::now();
     int max1D = findMax1D(matrix1D);
     int min1D = findMin1D(matrix1D);
@@ -124,7 +112,6 @@ int main() {
     auto end1D = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> duration1D = end1D - start1D;
 
-    // Print results
     std::cout << "Array of Pointers:" << std::endl;
     std::cout << "Max Element: " << maxPtr << std::endl;
     std::cout << "Min Element: " << minPtr << std::endl;
@@ -137,7 +124,6 @@ int main() {
     std::cout << "Sum: " << sum1D << std::endl;
     std::cout << "Execution Time: " << duration1D.count() << " seconds" << std::endl;
 
-    // Deallocate memory
     for (int i = 0; i < ROWS; i++) {
         delete[] matrixPtr[i];
     }
